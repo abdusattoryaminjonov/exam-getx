@@ -1,9 +1,8 @@
-import 'package:examgetxbloc/controllers/home_controller.dart';
+import 'package:examgetxbloc/bloc/blocpage_bloc.dart';
+import 'package:examgetxbloc/pages/bloc_page.dart';
+import 'package:examgetxbloc/pages/getx_page.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:lottie/lottie.dart';
-
-import '../views/item_of_news.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -13,43 +12,55 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  final homeController = Get.find<HomeController>();
-
-  @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-    homeController.apiCoinNewsList();
-  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        centerTitle: true,
-        backgroundColor: Colors.deepPurple,
-        title: Text("BitCoin News",style: TextStyle(color: Colors.white),),
-      ),
-      body: GetBuilder<HomeController>(
-        builder: (_){
-          return Stack(
-            children: [
-              ListView.builder(
-                itemCount: homeController.newsList.length,
-                itemBuilder: (ctx, index) {
-                  return itemOfNews(homeController.newsList[index]);
-                },
-              ),
-              homeController.isLoading
-                  ? Center(
-                child: Lottie.asset("assets/lottie/loding.json"),
-              )
-                  : SizedBox.shrink(),
-            ],
-          );
-        },
-      )
+        appBar:AppBar(
+          backgroundColor: Colors.amberAccent,
+          title: Text("Exam GetX and Bloc",style: TextStyle(color: Colors.white),),
+        ),
+        body: Container(
+          padding: EdgeInsets.only(left: 30,right: 30,top: 30),
+          width: double.infinity,
+          child: SingleChildScrollView(
+            child: Column(
+              children: [
+                Container(
+                  margin: EdgeInsets.only(top: 10),
+                  height: 45,
+                  width: double.infinity,
+                  child: MaterialButton(
+                    child: Text("News in GetX"),
+                    color: Colors.amberAccent,
+                    textColor: Colors.white,
+                    onPressed: (){
+                      Navigator.push(context, MaterialPageRoute(builder: (_)=> const GetxPage()));
+                    },
+                  ),
+                ),
+                Container(
+                  margin: EdgeInsets.only(top: 10),
+                  height: 45,
+                  width: double.infinity,
+                  child: MaterialButton(
+                    child: Text("News in Bloc"),
+                    color: Colors.amberAccent,
+                    textColor: Colors.white,
+                    onPressed: (){
+                      Navigator.push(context, MaterialPageRoute(builder: (_)=> BlocProvider(
+                        create: (context) => BlocPageBloc(),
+                          child: BlocPage(),
+                          )
+                        )
+                      );
+                    },
+                  ),
+                ),
+              ],
+            ),
+          ),
+        )
+
     );
   }
-
-
 }

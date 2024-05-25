@@ -1,16 +1,20 @@
 import 'package:get/get.dart';
 
-import '../models/news_model.dart';
-import '../services/http_servic.dart';
-import '../services/log_service.dart';
+import '../../models/news_model.dart';
+import '../../services/http_servic.dart';
+import '../../services/log_service.dart';
 
-class HomeController extends GetxController{
+
+
+class GetxPageController extends GetxController{
   bool isLoading = true;
-  List<CoinNews> newsList = [];
+  List<Article> newsList = [];
 
   apiCoinNewsList() async{
     var response = await Network.GET(Network.API_SEARCH, Network.paramsCoinNewsList());
     LogService.i(response.toString());
+    isLoading = false;
+
     if (response != null){
       newsList =  Network.parseCoinNewsList(response);
       isLoading = false;
@@ -19,11 +23,12 @@ class HomeController extends GetxController{
       isLoading = true;
       update();
     }
-
-    LogService.d(newsList.length.toString());
   }
 
   handleRefresh(){
     apiCoinNewsList();
+  }
+  tohome(){
+    Get.back();
   }
 }

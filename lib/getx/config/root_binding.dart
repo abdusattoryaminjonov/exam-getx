@@ -1,12 +1,12 @@
 import 'package:get/get.dart';
 
-import '../controllers/home_controller.dart';
+import '../controllers/getx_controller.dart';
 
 
 
 class RootBinding implements Bindings {
   @override
   void dependencies() {
-    Get.lazyPut(() => HomeController(), fenix: true);
+    Get.lazyPut(() => GetxPageController(), fenix: true);
   }
 }
