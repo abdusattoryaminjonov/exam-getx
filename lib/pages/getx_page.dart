@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
 
-import '../getx/controllers/getx_controller.dart';
+import '../controllers/getx_controller.dart';
 import '../views/item_of_getxpage.dart';
 
 class GetxPage extends StatefulWidget {
@@ -54,16 +54,6 @@ class _GetxPageState extends State<GetxPage> {
                   : SizedBox.shrink(),
             ],
           );
-        },
-      ),
-      floatingActionButton: FloatingActionButton(
-        backgroundColor: Colors.amberAccent,
-        child: Icon(
-          Icons.arrow_back_ios,
-          color: Colors.white,
-        ),
-        onPressed: () {
-          homeController.tohome();
         },
       ),
 

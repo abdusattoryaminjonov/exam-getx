@@ -1,9 +1,9 @@
 import 'package:examgetxbloc/pages/getx_page.dart';
-import 'package:examgetxbloc/pages/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import 'getx/config/root_binding.dart';
+import 'config/root_binding.dart';
+
 
 
 void main() {
@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: HomePage(),
+      home: GetxPage(),
       initialBinding: RootBinding(),
     );
   }
