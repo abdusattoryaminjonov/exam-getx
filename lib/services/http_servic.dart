@@ -49,8 +49,8 @@ class Network {
     });
     return params;
   }
-  static List<Article> parseCoinNewsList(String response) {
+  static CoinNews parseCoinNewsList(String response) {
     dynamic json = jsonDecode(response);
-    return CoinNews.fromJson(json).articles;
+    return CoinNews.fromJson(json);
   }
 }
