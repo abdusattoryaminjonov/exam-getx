@@ -3,13 +3,13 @@ import 'package:flutter/material.dart';
 
 import '../controllers/getx_controller.dart';
 
-Widget itemOfNews(Article article,GetxPageController controller){
+Widget itemOfNews(Article article,GetxPageController controller,BuildContext context){
   return  GestureDetector(
     onTap: (){
       controller.urllaunch(article.url);
     },
     onLongPress: (){
-      print("WebView");
+      controller.gotoWebViewPage(article.url,context);
     },
     child: Container(
       child: Column(

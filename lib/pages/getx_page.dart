@@ -44,7 +44,7 @@ class _GetxPageState extends State<GetxPage> {
               ListView.builder(
                 itemCount: homeController.newsList.length,
                 itemBuilder: (ctx, index) {
-                  return itemOfNews(homeController.newsList[index],homeController);
+                  return itemOfNews(homeController.newsList[index],homeController,context);
                 },
               ),
               homeController.isLoading
